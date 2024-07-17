@@ -1,13 +1,13 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/gke-test-429701/gke-test/quickstart-image', './app1' ]
+  args: ['build', '-t', 'gcr.io/gke-test-429701/container-one:$COMMIT_SHA', './app1' ]
   id: 'Build Docker Image'
 
   # images:
   # - 'us-central1-docker.pkg.dev/<your_project_id>/gke-repo/quickstart-image'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/gke-test-429701/gke-test/quickstart-image' ]
+  args: ['push', 'gcr.io/gke-test-429701/container-one:$COMMIT_SHA' ]
   id: 'Push Docker Image'
 
 # - name: 'gcr.io/cloud-builders/docker'
