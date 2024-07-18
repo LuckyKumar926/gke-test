@@ -15,9 +15,9 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     args: [ 'auth', 'configure-docker', 'gcr.io' ]
   #storage bucket
-  - name: 'gcr.io/cloud-builders/go'
-    args: ['install', '.']
-     logsBucket: 'gs://gk-bkt'
+  # - name: 'gcr.io/cloud-builders/go'
+  #   args: ['install', '.']
+  #    logsBucket: 'gs://gk-bkt'
   # Substitute environment variables into deployment.yaml
   - name: 'alpine'
     entrypoint: 'sh'
