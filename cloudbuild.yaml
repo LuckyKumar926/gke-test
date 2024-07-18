@@ -1,16 +1,16 @@
 steps:
   #  Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/container-one:$COMMIT_SHA', '.' ]
+    args: [ 'build', '-t', 'gcr.io/${PROJECT_ID}/container-one:$COMMIT_SHA', '.' ]
   #  Push the container image to container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', 'gcr.io/$PROJECT_ID/container-one:$COMMIT_SHA' ]
+    args: [ 'push', 'gcr.io/${PROJECT_ID}/container-one:$COMMIT_SHA' ]
   # Install kubectl
   - name: 'gcr.io/cloud-builders/gcloud'
     args: [ 'components', 'install', 'kubectl' ]
   # Authenticate kubectl
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: [ 'container', 'clusters', 'get-credentials', 'my-gke-cluster', '--region', 'us-central1', '--project', '$PROJECT_ID' ]
+    args: [ 'container', 'clusters', 'get-credentials', 'my-gke-cluster', '--region', 'us-central1', '--project', '${PROJECT_ID}' ]
   # Authenticate Docker
   - name: 'gcr.io/cloud-builders/gcloud'
     args: [ 'auth', 'configure-docker', 'gcr.io' ]
@@ -23,7 +23,7 @@ steps:
         apk add --no-cache gettext
         envsubst < deployment.yaml.template > deployment.yaml
     env:
-      - 'PROJECT_ID=$PROJECT_ID'
+      - 'PROJECT_ID=${PROJECT_ID}'
       - 'COMMIT_SHA=$COMMIT_SHA'
   # Deploy to GKE
   - name: 'gcr.io/cloud-builders/kubectl'
@@ -32,4 +32,4 @@ steps:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1'
       - 'CLOUDSDK_CONTAINER_CLUSTER=my-gke-cluster'
 images:
-  - 'gcr.io/$PROJECT_ID/container-one:$COMMIT_SHA'
+  - 'gcr.io/${PROJECT_ID}/container-one:$COMMIT_SHA'
