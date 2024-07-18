@@ -17,7 +17,7 @@ steps:
   #storage bucket
   - name: 'gcr.io/cloud-builders/go'
     args: ['install', '.']
-    logsBucket: 'gs://gk-bkt'
+     logsBucket: 'gs://gk-bkt'
   # Substitute environment variables into deployment.yaml
   - name: 'alpine'
     entrypoint: 'sh'
