@@ -33,3 +33,8 @@ steps:
       - 'CLOUDSDK_CONTAINER_CLUSTER=my-gke-cluster'
 images:
   - 'gcr.io/${PROJECT_ID}/container-one:$COMMIT_SHA'
+
+  build:
+  # ... other build configurations
+  logsBucket: "gs://gk-bkt"
+
