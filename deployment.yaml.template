@@ -41,11 +41,11 @@ spec:
     spec:
       containers:
         - name: container-one
-          image: gcr.io/$PROJECT_ID/container-one:$COMMIT_SHA
+          image: gcr.io/${PROJECT_ID}/container-one:$COMMIT_SHA
           ports:
             - containerPort: 6000
           volumeMounts:
-            - mountPath: "/bhishman_PV_dir"
+            - mountPath: "/laxman_PV_dir"
               name: volume
       volumes:
         - name: volume
