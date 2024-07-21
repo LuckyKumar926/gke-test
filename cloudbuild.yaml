@@ -9,11 +9,11 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     args: [ 'components', 'install', 'kubectl' ]
   # Authenticate kubectl
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: [ 'container', 'clusters', 'get-credentials', 'my-gke-cluster', '--region', 'us-central1', '--project', '${PROJECT_ID}' ]
+  # - name: 'gcr.io/cloud-builders/gcloud'
+  #   args: [ 'container', 'clusters', 'get-credentials', 'my-gke-cluster', '--region', 'us-central1', '--project', '${PROJECT_ID}' ]
   # Authenticate Docker
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: [ 'auth', 'configure-docker', 'gcr.io' ]
+  # - name: 'gcr.io/cloud-builders/gcloud'
+  #   args: [ 'auth', 'configure-docker', 'gcr.io' ]
   #storage bucket
   # - name: 'gcr.io/cloud-builders/go'
   #   args: ['install', '.']
